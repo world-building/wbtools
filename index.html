@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/png" href="./icon.png">
+        <link rel="stylesheet" href="./css/style.css">
+        <title>
+            World Building Tools
+        </title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Word Generator</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="main">
+            <div id="changelog">
+                <h2>Changelog</h2>
+
+                <div class="container">
+                    <h3>Version 1.2 [<a href="./files/wordgen_1.2.zip" target="_blank">Download</a>]</h3>
+                    <ul>
+                        <li>
+                            Added support for line-separated sample data instead of just space-separated data.
+                        </li>
+                        <li>
+                            Fixed bug where the program would crash due to escaped character (such as <em>\r</em>).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="container">
+                    <h3>Version 1.1 [<a href="./files/wordgen_1.1.zip" target="_blank">Download</a>]</h3>
+                    <ul>
+                        <li>
+                            Added check to prevent generation of words already contained in the sample file. This changed the format of the <em>.wgd</em> file, so the 1.1 <em>.wgd</em> files are incompatible with the 1.0 files and vice versa.
+                        </li>
+                        <li>
+                            Word length now follows an approximate normal distribution.
+                        </li>
+                    </ul>
+                </div>
+                <div class="container">
+                    <h3>Version 1.0 [<a href="./files/wordgen_1.0.zip" target="_blank">Download</a>]</h3>
+                    <ul>
+                        <li>
+                            Added processing of Sample Data. This picks up very basic patterns in the samples such as the starting letters, ending letters, average word length, and word length variance.
+                        </li>
+                        <li>
+                            Added support for saving (and loading) of processed data as a .wgd so that sample data doesn't have to be re-processed after closing and reopening the program.
+                        </li>
+                        <li>
+                            Added generation of 25 random words based on the sample data.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="guide">
+                <h2>How to Use</h2>
+                
+                <div class="container">
+
+                    <p>When the program is opened, there will only be 2 options available: Create Language and Load Language.</p>
+
+                    <img src="./img/1.png" />
+
+                    <p>
+                        To create a new language, press the Create Language button and select a plaintext file containing a list of at least 50 sample words. These words can be separated by line or by spaces (or a combination of the two).
+                        Depending on the size of the sample data, the program might take some time to process everything. The status bar on the bottom will indicate when the processing has finished. As an example, we will use a list of 10,000 english words (which can be found <a href="https://github.com/first20hours/google-10000-english/blob/master/google-10000-english.txt" target="_blank">here</a> - link will open in a new tab).
+                        After the processing has finished, the program will have enabled the other two buttons: Save Language and Generate New Words.
+                    </p>
+
+                    <img src="./img/2.png" />
+
+                    <p>
+                        The Save Lanuage button will save the processed information to a <em>.wgd</em> file so that it can be loaded if the program is closed. A previously saved <em>.wgd</em> file can be loaded with the Load Language button.
+                        The Generate New Words button will generate 25 words that are in the same style as the sample data. It will check the sample data when generating these words so that it will not produce words that are already contained in the sample.
+                        The length of these words will be approximately the same as the sample data as well. So for example, if your sample words are all exactly 5 characters long, then the program will only generate words that are also 5 characters long. For the english sample data, we get the following example output:
+                    </p>
+
+                    <img src="./img/3.png" />
+
+                    <p>
+                        Of course, a lot of these words that were generated don't sound very much like English words. This is because the program will only perform very basic pattern recognition (since it only cares about which characters tend to immediately follow other characters). As a result, we end up with nonesense like <em>dstr</em> or <em>hntesend</em>.
+                        However, we do end up with some words that could be considered English. For example, <em>hingy</em> sounds very much like an English word (and it even has an entry on <a href="https://www.urbandictionary.com/define.php?term=hingy" target="_blank">Urban Dictionary</a>). Additionally, we aren't limited to just the words that the program generates. Going back to the word <em>hntesend</em> that was generated, we see that it contains the character sequence <em>send</em> which is indeed an English word.
+                        In addition to all of this, we aren't limited to the 25 words either. The basic pattern recognition means that the 25 words are generated fairly quickly, so nothing stops us from regenerating 25 new words if we don't like the first 25 the program gave us.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>
+                Powered by Github Pages.
+            </p>
+        </footer>
+    </body>
+</html>
